@@ -104,6 +104,14 @@ class JsonMapper
     public $undefinedPropertyHandler = null;
 
     /**
+     * Useful option that allows you to map artifacts
+     * in primitive types correct (after converting xml to json)
+     *
+     * @var bool
+     */
+    public $softMode = false;
+
+    /**
      * Runtime cache for inspected classes. This is particularly effective if
      * mapArray() is called with a large number of objects
      *
@@ -202,6 +210,24 @@ class JsonMapper
                 );
             }
 
+            if ($this->softMode === true) {
+                if ($type === 'string' && gettype($jvalue) === 'array') {
+                    $jvalue = '';
+                }
+
+                if (($type === 'int' || $type == 'integer') && gettype($jvalue) === 'array') {
+                    $jvalue = 0;
+                }
+
+                if ($type === 'float' && gettype($jvalue) === 'array') {
+                    $jvalue = 0.0;
+                }
+
+                if (($type === 'bool' || $type == 'boolean') && gettype($jvalue) === 'array') {
+                    $jvalue = false;
+                }
+            }
+			
             if ($type === null || $type === 'mixed') {
                 //no given type - simply set the json data
                 $this->setProperty($object, $accessor, $jvalue);
