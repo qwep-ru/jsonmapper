@@ -1,23 +1,10 @@
 {
-    "name": "narrator69/jsonmapper",
-    "description": "Map nested JSON structures onto PHP classes with artifcat fixing feature",
+    "name": "qwep-ru/jsonmapper",
+    "description": "Fork of narrator69/jsonmapper",
     "license": "OSL-3.0",
     "autoload": {
         "psr-0": {"JsonMapper": "src/"}
     },
-    "authors": [
-        {
-            "name": "Christian Weiske",
-            "email": "cweiske@cweiske.de",
-            "homepage": "http://github.com/cweiske/jsonmapper/",
-            "role": "Developer"
-        },
-        {
-            "name": "Narrator69",
-            "homepage": "http://github.com/narrator69",
-            "role": "Developer"
-        }
-    ],
     "require":{
       "php": ">=5.6"
     },
